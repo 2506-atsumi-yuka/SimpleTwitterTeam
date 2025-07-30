@@ -42,26 +42,31 @@
 		    <c:remove var="errorMessages" scope="session" />
 		</c:if>
 
-		<form action="./" method="get">
-			日付：
-			<input type="date" id="start" name="start" value="${start}">
-			～
-			<input type="date" id="end" name="end" value="${end}">
-			<input type="submit" value="絞り込み">
+	<form action="./" method="get">
+		日付： <input type="date" id="start" name="start" value="${start}">
+		～ <input type="date" id="end" name="end" value="${end}"> <input
+			type="submit" value="絞り込み">
+	</form>
+	<div class="search">
+		<form action="./" action="get">
+			つぶやき： <input type="text" name="word" value="${searchWord}" /> <input
+				type="radio" name="radiobutton" value="contain" checked="checked">
+			を含む <input type="submit" value="検索">
 		</form>
-		<br />
-		<div class="form-area">
-		    <c:if test="${ isShowMessageForm }">
-		        <form action="message" method="post">
-		            いま、どうしてる？<br />
-		            <textarea name="text" cols="100" rows="5" class="tweet-box"></textarea>
-		            <br />
-		            <input type="submit" value="つぶやく">（140文字まで）
-		        </form>
-		    </c:if>
-		</div>
+	</div>
 
-        <div class="messages">
+	<br />
+	<div class="form-area">
+		<c:if test="${ isShowMessageForm }">
+			<form action="message" method="post">
+				いま、どうしてる？<br />
+				<textarea name="text" cols="100" rows="5" class="tweet-box"></textarea>
+				<br /> <input type="submit" value="つぶやく">（140文字まで）
+			</form>
+		</c:if>
+	</div>
+
+	<div class="messages">
 		 	<c:forEach items="${messages}" var="message">
 			 	<div class="message">
 			 		<div class="account-name">
